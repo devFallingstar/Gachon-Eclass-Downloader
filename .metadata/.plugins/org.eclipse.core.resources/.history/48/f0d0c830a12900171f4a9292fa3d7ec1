@@ -1,0 +1,53 @@
+package System;
+
+import Session.*;
+
+import java.util.List;
+
+import com.gargoylesoftware.htmlunit.WebClient;
+import com.gargoylesoftware.htmlunit.html.HtmlPage;
+
+import FileProcess.*;
+
+public class MainSystem {
+	private static MainSystem myMain = new MainSystem();
+	private GachonSession tmp1;
+	private WebClient myClient;
+	private List<String> lectureList;
+	private List<String> fileList;
+	
+	public static void main(String[] args) {
+		myMain = new MainSystem();
+	}
+	
+	public MainSystem(){
+		int resultCode;
+		this.tmp1 = new GachonSession();
+		resultCode = this.tmp1.logIn("stardung86", "Netdong12");
+		
+		if (resultCode == 0){
+			lectureList = getLectureList();
+			
+			
+		}else{
+			System.out.println("Web page Loading failed!");
+		}
+	}
+	
+	public void startDownload(String url, String name, String dir){
+		FileDownloader.downloadWithURL(url, name, dir);
+	}
+	
+	private List<String> getLectureList(){
+		
+		return null;
+	}
+	
+	private List<String> getFileList(String lectureURL){
+		List<String> files = null;
+		HtmlPage eclassPage = 
+		
+		return files;
+	}
+
+}

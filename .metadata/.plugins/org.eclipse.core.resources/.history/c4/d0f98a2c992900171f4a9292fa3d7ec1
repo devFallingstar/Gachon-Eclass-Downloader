@@ -1,0 +1,8 @@
+package FileProcess;
+
+public class FileDownloader {
+	
+	public static void downloadWithURL(String fileURL, String fileName, String downloadDir){
+		
+	}
+}

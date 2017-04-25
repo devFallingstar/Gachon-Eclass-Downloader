@@ -1,0 +1,37 @@
+package FileProcess;
+
+import java.io.BufferedOutputStream;
+import java.io.FileOutputStream;
+import java.io.InputStream;
+import java.io.OutputStream;
+import java.net.URL;
+import java.net.URLConnection;
+
+public class FileDownloader {
+	final static int size = 1024;
+	
+	public static void downloadWithURL(String fileURL, String fileName, String downloadDir){
+		OutputStream outStream = null;
+		URLConnection uCon = null;
+		InputStream is = null;
+		
+		try {
+			URL url;
+			byte[] buf;
+			int byteRead;
+			int byteWritten = 0;
+			url = new URL(fileURL);
+			outStream = new BufferedOutputStream(new FileOutputStream(downloadDir + "\\" + fileName));
+			uCon = url.openConnection();
+			is = uCon.getInputStream();
+			buf = new byte[size];
+			while ((byteRead = is.read(buf)) != -1){
+				outStream.write(buf, 0, byteRead);
+				byteWritten += byteRead;
+			}
+			
+		}catch (Exception e){
+			e.printStackTrace();
+		}
+	}
+}

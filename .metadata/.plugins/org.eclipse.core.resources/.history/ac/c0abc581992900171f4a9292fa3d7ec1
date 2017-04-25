@@ -1,0 +1,20 @@
+package FileProcess;
+
+import java.io.InputStream;
+import java.io.OutputStream;
+import java.net.URLConnection;
+
+public class FileDownloader {
+	
+	public static void downloadWithURL(String fileURL, String fileName, String downloadDir){
+		OutputStream outStream = null;
+		URLConnection uCon = null;
+		InputStream is = null;
+		
+		try {
+			
+		}catch {
+			
+		}
+	}
+}

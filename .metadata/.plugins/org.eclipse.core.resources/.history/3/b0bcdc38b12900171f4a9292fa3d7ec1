@@ -1,0 +1,6 @@
+package Data;
+
+public interface LectureData {
+	String lectureURL;
+	List<String> fileList;
+}

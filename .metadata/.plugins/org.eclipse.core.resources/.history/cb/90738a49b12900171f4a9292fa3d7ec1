@@ -1,0 +1,8 @@
+package Data;
+
+import java.util.List;
+
+public interface LectureData {
+	String lectureURL = "";
+	List<String> fileList = "";
+}

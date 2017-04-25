@@ -1,0 +1,36 @@
+package System;
+
+import Session.*;
+
+import java.util.List;
+
+import FileProcess.*;
+
+public class MainSystem {
+	MainSystem myMain = new MainSystem();
+	private GachonSession tmp1;
+	
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		
+			myMain.tmp1 = new GachonSession();
+			tmp1.logIn("stardung86", "Netdong12");
+			
+			startDownload("http://i.huffpost.com/gen/4127522/thumbs/o-THE-570.jpg","EINUN.jpg","Test123");
+	}
+	
+	public MainSystem(){
+		
+	}
+	
+	public void startDownload(String url, String name, String dir){
+		FileDownloader.downloadWithURL(url, name, dir);
+	}
+	
+	public List<String> getFileList(String lectureURL){
+		List<String> files = null;
+		
+		return files;
+	}
+
+}
