@@ -46,6 +46,7 @@ public class mainGUI extends JFrame {
 	 * Create the frame.
 	 */
 	public mainGUI() {
+		setTitle("Eclass Downloader - version 0.1 - By. Dev.Fallingstar");
 		contentPane = new JPanel();
 		contentPane.setLayout(null);
 		setContentPane(contentPane);
