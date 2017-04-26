@@ -36,7 +36,7 @@ public class GachonSession {
 			
 	  		URL = "http://sson.kyungwon.ac.kr/sso/pmi-sso-login-uid-password2.jsp?uid=" + ID + "&password=" + PW + "&gid=gid_lib&return_url=http://www.gachon.ac.kr/main.jsp";
 	  		
-	  		webClient = new WebClient(BrowserVersion.BEST_SUPPORTED);
+	  		webClient = new WebClient(BrowserVersion.FIREFOX_52);
 	  		
 	  		webClient.addRequestHeader("Accept-Language", "ko-KR,ko;q=0.8,en-US;q=0.5,en;q=0.3");
 	        webClient.addRequestHeader("Accept", "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8");

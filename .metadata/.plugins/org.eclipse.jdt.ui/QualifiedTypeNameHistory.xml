@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<qualifiedTypeNameHistroy>
+<fullyQualifiedTypeName name="java.io.OutputStream"/>
+<fullyQualifiedTypeName name="java.net.URLConnection"/>
+<fullyQualifiedTypeName name="java.io.InputStream"/>
+<fullyQualifiedTypeName name="java.net.URL"/>
+<fullyQualifiedTypeName name="java.io.BufferedOutputStream"/>
+<fullyQualifiedTypeName name="java.io.FileOutputStream"/>
+<fullyQualifiedTypeName name="java.io.File"/>
+<fullyQualifiedTypeName name="com.gargoylesoftware.htmlunit.WebClient"/>
+<fullyQualifiedTypeName name="com.gargoylesoftware.htmlunit.html.HtmlPage"/>
+<fullyQualifiedTypeName name="com.gargoylesoftware.htmlunit.html.DomElement"/>
+<fullyQualifiedTypeName name="java.lang.System"/>
+<fullyQualifiedTypeName name="java.util.List"/>
+<fullyQualifiedTypeName name="java.util.ArrayList"/>
+<fullyQualifiedTypeName name="System.MainSystem"/>
+<fullyQualifiedTypeName name="com.gargoylesoftware.htmlunit.html.HtmlAnchor"/>
+</qualifiedTypeNameHistroy>

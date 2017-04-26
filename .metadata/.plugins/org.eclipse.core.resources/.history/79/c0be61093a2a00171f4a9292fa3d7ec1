@@ -1,0 +1,24 @@
+package Data;
+
+import java.util.ArrayList;
+import java.util.List;
+
+public class LectureData {
+	private String lectureURL = "";
+	private String eclassURL = "";
+	List<String> fileList = new ArrayList<String>();
+	public String getLectureURL() {
+		return lectureURL;
+	}
+	public void setLectureURL(String lectureURL) {
+		this.lectureURL = lectureURL;
+	}
+	public List<String> getFileList(){
+		return fileList;
+	}
+	public void addFileList(String path){
+		if (!fileList.contains(path)){
+			fileList.add(path);
+		}
+	}
+}
