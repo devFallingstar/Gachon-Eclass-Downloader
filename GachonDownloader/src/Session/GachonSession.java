@@ -7,11 +7,6 @@ import com.gargoylesoftware.htmlunit.BrowserVersion;
 import com.gargoylesoftware.htmlunit.WebClient;
 import com.gargoylesoftware.htmlunit.html.HtmlPage;
 
-//Refered by http://nuripetstory.tistory.com/entry/Facebook-Post-����-�깅�-�깃났
-//To log in into facebook homepage
-//http://gwpark.tistory.com/2081
-//https://ko.wikipedia.org/wiki/XPath
-
 public class GachonSession {
 	
 	private static String URL;
@@ -55,7 +50,6 @@ public class GachonSession {
 	        
 	        webClient.getOptions().setTimeout(5000);
 	        
-	        
 	        //Prevent SSL handshaking problems
 	        //Refered by 
 	        //http://stackoverflow.com/questions/5336280/why-doesnt-htmlunit-work-on-this-https-webpage
@@ -88,9 +82,6 @@ public class GachonSession {
 	  		e.printStackTrace();
 	  		return -600;
 	  	}
-	  	
-	  	//return URL;
-	  	
 	}
 	
 	

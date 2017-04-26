@@ -3,23 +3,24 @@ package Data;
 import java.util.ArrayList;
 import java.util.List;
 
-public class LectureData {
+// Class for ClassData
+public class ClassData {
 	private String lectureName = "";
 	private String LectureID = "";
 	private String eclassURL = "";
 	private String lectureURL = "";
-	List<String> fileList = new ArrayList<String>();
+	private List<String> fileList = new ArrayList<String>();
 	
-	public String getLectureName() {
+	public String getName() {
 		return lectureName;
 	}
-	public void setLectureName(String lectureName) {
+	public void setName(String lectureName) {
 		this.lectureName = lectureName;
 	}
-	public String getLectureID() {
+	public String getID() {
 		return LectureID;
 	}
-	public void setLectureID(String lectureID) {
+	public void setID(String lectureID) {
 		LectureID = lectureID;
 	}
 	public String getLectureURL() {
@@ -28,10 +29,10 @@ public class LectureData {
 	public void setLectureURL(String lectureURL) {
 		this.lectureURL = lectureURL;
 	}
-	public String getEclassURL() {
+	public String getURL() {
 		return eclassURL;
 	}
-	public void setEclassURL(String eclassURL) {
+	public void setURL(String eclassURL) {
 		this.eclassURL = eclassURL;
 	}
 	public List<String> getFileList(){
