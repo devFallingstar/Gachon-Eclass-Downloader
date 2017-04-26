@@ -44,6 +44,7 @@ public class MainSystem extends Thread {
         
     }
 
+	@SuppressWarnings("deprecation")
 	private int getLogIn(){
 		int resultCode;
 		myGUI.addLog("로그인 진행 중...");
@@ -67,13 +68,18 @@ public class MainSystem extends Thread {
 					getLecturesFromClassData(_lecture);
 				}
 				myGUI.addLog("모든 파일을 다운로드 받았습니다!");
+				myGUI.setEnableDownloadWidgets();
+				this.stop();
 			} catch (Exception e) {
-				e.printStackTrace();
+				myGUI.addLog("네트워크 오류!");
+				myGUI.addLog(e.getMessage());
+//				myGUI.setEnableDownloadWidgets();
 			}
 		}else{
 			myGUI.addLog("로그인 실패!");
 			myGUI.addLog("아이디와 비밀번호를 다시 확인해주세요!");
 		}
+		myGUI.setEnableDownloadWidgets();
 		
 		return resultCode;
 	}

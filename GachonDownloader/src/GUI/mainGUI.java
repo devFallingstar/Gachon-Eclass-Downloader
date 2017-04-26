@@ -135,13 +135,13 @@ public class mainGUI extends JFrame {
 			}
 		}
 	}
-	private void setEnableDownloadWidgets(){
+	public void setEnableDownloadWidgets(){
 		IDTxt.setEnabled(true);
 		PWTxt.setEnabled(true);
 		DownloadBtn.setEnabled(true);
 		CancelBtn.setEnabled(false);
 	}
-	private void setEnableCancelWidgets(){
+	public void setEnableCancelWidgets(){
 		IDTxt.setEnabled(false);
 		PWTxt.setEnabled(false);
 		DownloadBtn.setEnabled(false);
