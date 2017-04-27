@@ -26,7 +26,7 @@ public class FileDownloader {
 	public static void writeLogFile(String log){
 		// new BufferedWriter(new FileWriter(article, true));
 		//==========================//
-        // ÅØ½ºÆ® ÆÄÀÏ ¾²±â
+        // ï¿½Ø½ï¿½Æ® ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
         //==========================//
 //        BufferedWriter bw = null;
 //        try {
@@ -109,7 +109,7 @@ public class FileDownloader {
 			while((len = is.read(buf)) > 0){
 				tmp += len;
 				percent = (tmp / size)*100;
-				MainSystem.myGUI.replaceLog("´Ù¿î·Îµå Áß... "+Math.round(percent)+"%");
+				MainSystem.myGUI.replaceLog("ë‹¤ìš´ë¡œë“œ ì¤‘... "+Math.round(percent)+"%");
 				fos.write(buf, 0, (int)len);
 			}
 			
@@ -162,6 +162,12 @@ public class FileDownloader {
 		rootPath = _path+File.separator;
 		
 		try {
+			if(!dirFile.exists()){
+				if(!dirFile.getParentFile().exists()){
+					dirFile.getParentFile().mkdirs();
+				}
+				dirFile.createNewFile();
+			}
 			 out = new BufferedWriter(new FileWriter(dirFile, false));
 			 out.write(rootPath);
 			 out.newLine();

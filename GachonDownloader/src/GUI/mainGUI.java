@@ -119,7 +119,7 @@ public class mainGUI extends JFrame {
 				setEnableCancelWidgets();
 			}else if(clicked.equals(CancelBtn)){
 				user.stop();
-				addLog("´Ù¿î·Îµå°¡ Ãë¼ÒµÇ¾ú½À´Ï´Ù!");
+				addLog("ë‹¤ìš´ë¡œë“œê°€ ì·¨ì†Œë˜ì—ˆìŠµë‹ˆë‹¤!");
 				setEnableDownloadWidgets();
 			}else if(clicked.equals(pathSetBtn)){
 				if (jfc.showOpenDialog(null) == JFileChooser.APPROVE_OPTION){
@@ -150,7 +150,7 @@ public class mainGUI extends JFrame {
 	@SuppressWarnings("unused")
 	private void alertWithErrorCode(int code){
 		if (code >= 400 && code <= 499){
-			JOptionPane.showMessageDialog(this, "³×Æ®¿öÅ© ¿¬°áÀ» È®ÀÎÇØÁÖ¼¼¿ä!", "¿¬°á ¿À·ù!", 0);
+			JOptionPane.showMessageDialog(this, "ï¿½ï¿½Æ®ï¿½ï¿½Å© ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ È®ï¿½ï¿½ï¿½ï¿½ï¿½Ö¼ï¿½ï¿½ï¿½!", "ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½!", 0);
 		}
 	}
 	private void clearLog(){
