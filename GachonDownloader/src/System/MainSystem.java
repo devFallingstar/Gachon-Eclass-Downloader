@@ -24,7 +24,6 @@ public class MainSystem extends Thread {
 	private WebClient myClient;
 	private HtmlPage myPage;
 	private List<ClassData> classList = new ArrayList<ClassData>();
-	private List<String> readArticles;
 	
 	public static void main(String[] args) {
 		myGUI = new mainGUI();
@@ -41,7 +40,6 @@ public class MainSystem extends Thread {
 	
 	public void run() {
         getLogIn();
-        
     }
 
 	@SuppressWarnings("deprecation")
@@ -53,7 +51,6 @@ public class MainSystem extends Thread {
 		if (resultCode == 0){
 			myGUI.addLog("로그인 성공~!");
 			myGUI.addLog("필요한 정보 구성 중...");
-			readArticles = FileDownloader.readArticleLogWithList();
 			
 			myClient = this.tmp1.getSession();
 			try {
@@ -65,7 +62,7 @@ public class MainSystem extends Thread {
 				myGUI.addLog("과목 별 강의 정보 받는 중...");
 				for (ClassData _lecture : classList){
 					myPage = (HtmlPage)myClient.getPage(_lecture.getURL());
-					getLecturesFromClassData(_lecture);
+					getLecturesDataAndDownload(_lecture);
 				}
 				myGUI.addLog("모든 파일을 다운로드 받았습니다!");
 				myGUI.setEnableDownloadWidgets();
@@ -106,7 +103,7 @@ public class MainSystem extends Thread {
 	}
 	
 	// Get List of lecture
-	private void getLecturesFromClassData(ClassData _class){
+	private void getLecturesDataAndDownload(ClassData _class){
 		myGUI.addLog("강의 파일 받기 시작 : "+_class.getName());
 		
 		// Parse every lectures
@@ -137,10 +134,10 @@ public class MainSystem extends Thread {
 							String articleId = articleHref.substring(20, articleHref.indexOf(')'));
 							// If this System read the article already,
 							// it doesn't have to read once again.
-							if (readArticles.contains(articleId)){
-								myGUI.addLog("이미 다운로드를 마친 강의입니다.");
-								continue;
-							}
+//							if (readArticles.contains(articleId)){
+//								myGUI.addLog("이미 다운로드를 마친 자료입니다.");
+//								continue;
+//							}
 							String articleURL = lectureFileListURL+"&article_no="+articleId;
 							// Since we have to 'view' some content with a page,
 							// change source page from list.jsp to view.jsp
@@ -172,10 +169,14 @@ public class MainSystem extends Thread {
 											break;
 										}
 									}
-									myGUI.addLog("강좌 파일 받는 중 : "+fileDir+" - "+fileName);
-									MainSystem.myGUI.addLog("다운로드 중... 0%");
-									// Trigger downloading
-									FileDownloader.downloadWithURL(currentFileAnchor, fileName, fileParentDir, fileDir);
+									if (FileManager.checkIfFileisExists(fileName, fileParentDir, fileDir)){
+										myGUI.addLog("해당 파일이 이미 존재합니다 : "+fileName);
+									}else{
+										myGUI.addLog("강좌 파일 받는 중 : "+fileDir+" - "+fileName);
+										MainSystem.myGUI.addLog("다운로드 중... 0%");
+										// Trigger downloading
+										FileDownloader.downloadWithURL(currentFileAnchor, fileName, fileParentDir, fileDir);
+									}
 								}
 							}
 							//One article end

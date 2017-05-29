@@ -21,30 +21,10 @@ public class FileDownloader {
 	static String logPath = System.getProperty("user.home")+File.separator+"GachonDownloader";
 	static File dirFile = new File(logPath, "Directory.txt");
 	static File articleFile = new File(logPath, "Articles.txt");
+	static private boolean didInitedFilePath = false;
 	private static BufferedWriter out;
 	
 	public static void writeLogFile(String log){
-		// new BufferedWriter(new FileWriter(article, true));
-		//==========================//
-        // �ؽ�Ʈ ���� ����
-        //==========================//
-//        BufferedWriter bw = null;
-//        try {
-//        	if (!dirFile.exists()){
-//    			logFile.createNewFile();
-//    		}
-//            bw = new BufferedWriter(new FileWriter(logFile, true));
-//            bw.write(log+"\n");
-//            bw.flush();
-//        } catch (IOException e) {
-//            e.printStackTrace();
-//        }finally {
-//            if(bw != null) try {
-//            	bw.close(); 
-//            	} catch (IOException e) {
-//            		
-//            	}
-//        }
 	}
 	
 	public static void writeArticleLog(String articleId){
@@ -86,7 +66,12 @@ public class FileDownloader {
 	// inputStream will be generated from Web Response.
 	public static void downloadWithURL(HtmlAnchor link, String fileName, String parentDir, String fileDir){
 		try {
-			initRootPath();
+			if (!didInitedFilePath){
+				FileManager.initRootPath();
+				rootPath = FileManager.getRootPath();
+				didInitedFilePath = true;
+			}
+			
 			fileDir = fileDir.replaceAll("[^\uAC00-\uD7A3xfe0-9a-zA-Z\\s]", " ");
 			fileDir = fileDir.replaceAll("\\s{2,}", " ");
 			fileDir = fileDir.trim();
@@ -95,10 +80,10 @@ public class FileDownloader {
 			parentDir = parentDir.trim();
 			
 			// Init File instance with local path to download the file.
-			File fileDest = new File(rootPath + parentDir + File.separator + fileDir);
+			File fileDest = new File(rootPath + File.separator + parentDir + File.separator + fileDir);
 			fileDest.mkdirs();
 			// Init Stream variables to download file with stream.
-			FileOutputStream fos = new FileOutputStream(rootPath + parentDir + File.separator + fileDir + File.separator + fileName);
+			FileOutputStream fos = new FileOutputStream(rootPath + File.separator + parentDir + File.separator + fileDir + File.separator + fileName);
 			InputStream is = link.click().getWebResponse().getContentAsStream();
 			double size = (double)link.click().getWebResponse().getContentLength();
 			byte[] buf = new byte[1024];
@@ -116,64 +101,6 @@ public class FileDownloader {
 			fos.close();
 			is.close();
 		}catch (Exception e){
-			e.printStackTrace();
-		}
-	}
-	public static void initRootPath(){
-		String path = getRootPathFromLog();
-		try{
-			if (path.equals("WTFNOPATH")){
-				setRootPath(System.getProperty("user.home"));
-			}else{
-				setRootPath(path);
-			}
-		}catch(Exception e){
-			setRootPath(System.getProperty("user.home"));
-		}
-	}
-	public static String getRootPathFromLog(){
-		if (dirFile.exists()){
-			try {
-				BufferedReader in = new BufferedReader(new FileReader(dirFile));
-				String s = in.readLine();
-				in.close();
-				return s;
-			} catch (IOException e) {
-				e.printStackTrace();
-				return "WTFNOPATH";
-			}
-		}else{
-			try {
-				File logFile = new File(logPath);
-				if(!logFile.exists()){
-					logFile.mkdirs();
-				}
-				dirFile.createNewFile();
-				setRootPath(System.getProperty("user.home"));
-				
-				return getRootPathFromLog();
-			} catch (IOException e) {
-				e.printStackTrace();
-				return "WTFNOPATH";
-			}
-		}
-	}
-	public static void setRootPath(String _path){
-		rootPath = _path+File.separator;
-		
-		try {
-			if(!dirFile.exists()){
-				if(!dirFile.getParentFile().exists()){
-					dirFile.getParentFile().mkdirs();
-				}
-				dirFile.createNewFile();
-			}
-			 out = new BufferedWriter(new FileWriter(dirFile, false));
-			 out.write(rootPath);
-			 out.newLine();
-			 out.flush();
-			 out.close();
-		} catch (IOException e) {
 			e.printStackTrace();
 		}
 	}

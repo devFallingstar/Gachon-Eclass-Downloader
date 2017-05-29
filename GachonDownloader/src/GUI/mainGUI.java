@@ -1,17 +1,17 @@
 package GUI;
 
+import java.awt.Desktop;
+import java.awt.FileDialog;
+import java.awt.Font;
+import java.awt.Frame;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.io.File;
-import java.io.IOException;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.JPasswordField;
 import javax.swing.text.BadLocationException;
-
-import FileProcess.FileDownloader;
-
+import javax.swing.JTextArea;
 import javax.swing.JButton;
 import javax.swing.JFileChooser;
 import javax.swing.JTextField;
@@ -19,12 +19,11 @@ import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JScrollPane;
 
+import java.io.File;
+import java.io.IOException;
+
 import System.MainSystem;
-
-import javax.swing.JTextArea;
-
-import java.awt.Desktop;
-import java.awt.Font;
+import FileProcess.FileManager;
 
 @SuppressWarnings("serial")
 public class mainGUI extends JFrame {
@@ -124,11 +123,11 @@ public class mainGUI extends JFrame {
 			}else if(clicked.equals(pathSetBtn)){
 				if (jfc.showOpenDialog(null) == JFileChooser.APPROVE_OPTION){
 					String path = jfc.getSelectedFile().getAbsolutePath();
-					FileDownloader.setRootPath(path);
+					FileManager.setRootPath(path);
 				}
 			}else if(clicked.equals(openPathBtn)){
 				try {
-					Desktop.getDesktop().open(new File(FileDownloader.getRootPathFromLog()));
+					Desktop.getDesktop().open(new File(FileManager.getRootPathFromLog()));
 				} catch (IOException e1) {
 					e1.printStackTrace();
 				}
